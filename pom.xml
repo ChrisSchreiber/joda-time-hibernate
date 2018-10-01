@@ -91,6 +91,10 @@
               <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
               <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
             </manifest>
+            <manifestEntries>
+              <Implementation-Build>$\{buildNumber}</Implementation-Build>
+              <Implementation-Timestamp>$\{timestamp}</Implementation-Build>
+            </manifestEntries>
           </archive>
         </configuration>
       </plugin>
@@ -182,6 +186,23 @@
           <repositoryOwner>JodaOrg</repositoryOwner>
           <repositoryName>jodaorg.github.io</repositoryName>
           <branch>refs/heads/master</branch>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>buildnumber-maven-plugin</artifactId>
+	<version>1.4</version>
+        <executions>
+          <execution>
+            <phase>validate</phase>
+            <goals>
+              <goal>create</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <doCheck>true</doCheck>
+          <doUpdate>true</doUpdate>
         </configuration>
       </plugin>
     </plugins>
